@@ -1,4 +1,4 @@
-import React,{createContext,useContext,useReducer} from 'react'
+import React,{createContext,useContext,useEffect,useReducer} from 'react'
 import reducer from './reducer'
 const initialState={
     currentUser:null,
@@ -24,6 +24,14 @@ export const useValue=()=>
 const ContextProvider=({children})=>
 {
     const [state,dispatch]=useReducer(reducer,initialState)
+    useEffect(()=>{
+        // the user is stored as a string , we parse it as an object using json.parse
+        const currentUser=JSON.parse(localStorage.getItem('currentUser'))
+        if(currentUser)
+        {
+            dispatch({type:"UPDATE_USER",payload:currentUser})
+        }
+    },[])
     return (
         <Context.Provider value={{state,dispatch}}> {children}</Context.Provider>
     )

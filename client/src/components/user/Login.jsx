@@ -10,7 +10,7 @@ import {
   TextField,
 } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import { register } from '../../actions/user';
+import { login,register } from '../../actions/user';
 import { useValue } from '../../context/ContextProvider';
 import GoogleOneTapLogin from './GoogleOneTapLogin';
 import PasswordField from './PasswordField';
@@ -99,7 +99,9 @@ const Login = () => {
             inputRef={emailRef}
             required
           />
+
           <PasswordField {...{ passwordRef }} />
+            {/* name and confirm password field in the register only*/}
           {isRegister && (
             <PasswordField
               passwordRef={confirmPasswordRef}
@@ -107,6 +109,7 @@ const Login = () => {
               label="Confirm Password"
             />
           )}
+
         </DialogContent>
         <DialogActions sx={{ px: '19px' }}>
           <Button type="submit" variant="contained" endIcon={<Send />}>

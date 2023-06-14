@@ -36,4 +36,4 @@ const ContextProvider=({children})=>
         <Context.Provider value={{state,dispatch}}> {children}</Context.Provider>
     )
 }
-export default ContextProvider
+export default ContextProvider;

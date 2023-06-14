@@ -1,7 +1,16 @@
 import { Close, Send } from '@mui/icons-material';
-import {Button,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle,IconButton,TextField} from '@mui/material';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+  TextField,
+} from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-// import { login, register } from '../../actions/user';
+import { register } from '../../actions/user';
 import { useValue } from '../../context/ContextProvider';
 import GoogleOneTapLogin from './GoogleOneTapLogin';
 import PasswordField from './PasswordField';
@@ -24,11 +33,11 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const email = emailRef.current.value;
-    // const password = passwordRef.current.value;
-    // // if (!isRegister) return login({ email, password }, dispatch);
-    // const name = nameRef.current.value;
-    const confirmPassword = confirmPasswordRef.current;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    if (!isRegister) return login({ email, password }, dispatch);
+    const name = nameRef.current.value;
+    const confirmPassword = confirmPasswordRef.current.value;
     if (password !== confirmPassword)
       return dispatch({
         type: 'UPDATE_ALERT',
@@ -38,15 +47,12 @@ const Login = () => {
           message: 'Passwords do not match',
         },
       });
-    // register({ name, email, password }, dispatch);
+    register({ name, email, password }, dispatch);
   };
 
   useEffect(() => {
-    isRegister ?
-      setTitle('Register')
-      : setTitle('Login');
+    isRegister ? setTitle('Register') : setTitle('Login');
   }, [isRegister]);
-
   return (
     <Dialog open={openLogin} onClose={handleClose}>
       <DialogTitle>
@@ -63,7 +69,7 @@ const Login = () => {
           <Close />
         </IconButton>
       </DialogTitle>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <DialogContent dividers>
           <DialogContentText>
             Please fill your information in the fields below:
@@ -111,7 +117,7 @@ const Login = () => {
       <DialogActions sx={{ justifyContent: 'left', p: '5px 24px' }}>
         {isRegister
           ? 'Have an account? Sign in now '
-          : "Don't have an account? Create one now "}
+          : "Don'thave an account? Create one now "}
         <Button onClick={() => setIsRegister(!isRegister)}>
           {isRegister ? 'Login' : 'Register'}
         </Button>

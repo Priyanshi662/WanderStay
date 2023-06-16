@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken'
 import tryCatch from './utils/tryCatch.js';
@@ -66,4 +66,14 @@ export const login = tryCatch(async (req, res) => {
     });
   });
   
+  
+  export const updateProfile = tryCatch(async (req, res) => {
+    const updatedUser= await User.findByIdAndUpdate(req.user.id,res.body,{new:true})
+    const {_id:id,name,photoURL}=updatedUser
+
+    const token = jwt.sign({id,name,photoURL},process.env.JWT_SECRET,{
+      expiresIn:'1h'
+    });
+    res.status(200).json({success:true,result:{name,photoURL,token}});
+  });
   

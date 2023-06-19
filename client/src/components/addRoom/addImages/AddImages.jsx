@@ -2,7 +2,8 @@ import { Paper } from "@mui/material";
 import React from "react";
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-
+import ProgressList from "./progressList/ProgressList";
+import ImagesList from "./ImagesList";
 const AddImages = () => {
     const [files, setFiles] = useState([]);
 
@@ -16,7 +17,8 @@ const AddImages = () => {
     });
 
     return(
-        <Paper
+      <>
+      <Paper
         sx={{
             cursor: 'pointer',
             background: '#fafafa',
@@ -36,11 +38,14 @@ const AddImages = () => {
             {/* em is a tag used to render emphasized text , the text enclosed is displayed in italics*/}
             <em>(images with *.jpeg, *.png, *.jpg extension will be accepted)</em>
         </div>
-        </Paper>)
+        </Paper>
+        <ProgressList {...{ files }} />
+      <ImagesList />
+      </>
+        )
     }
 export default AddImages;
 
   
-      // <ProgressList {...{ files }} />
-      // <ImagesList />
+      
     

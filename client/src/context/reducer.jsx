@@ -22,7 +22,7 @@ const reducer=(state,action)=>{
         case 'UPDATE_PROFILE':
             return { ...state, profile:action.payload };
         case 'UPDATE_IMAGES' :
-            return {...state,images:[...images,action.payload]};
+            return {...state,images:[...state.images,action.payload]};
         default:
             throw new Error("No matching action!")
     }

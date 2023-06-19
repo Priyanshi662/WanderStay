@@ -6,9 +6,9 @@ import {
   } from '@mui/material';
   import { AddLocationAlt, Bed, LocationOn } from '@mui/icons-material';
   import { useEffect, useRef, useState } from 'react';
-  // import ClusterMap from './map/ClusterMap';
-  // import Rooms from './rooms/Rooms';
-  // import AddRoom from './addRoom/AddRoom';
+  import ClusterMap from './map/ClusterMap';
+  import Rooms from './rooms/Rooms';
+  import AddRoom from './addRoom/AddRoom';
   // import Protected from './protected/Protected';
   // import { useValue } from '../context/ContextProvider';
   
@@ -18,24 +18,24 @@ import {
     //   state: { section },
     //   dispatch,
     // } = useValue();
-    // const ref = useRef();
-    // useEffect(() => {
-    //   ref.current.ownerDocument.body.scrollTop = 0;
-    // }, [section]);
+    const ref = useRef();
+    useEffect(() => {
+      ref.current.ownerDocument.body.scrollTop = 0;
+    }, [value]);
     return (
-      <Box >
-        {/* ref={ref} */}
-        {/* { */}
-         {/* { */}
-          {/* //   0: <ClusterMap />,
-          //   1: <Rooms />,
-          //   2: (
-          //     <Protected>
-          //       <AddRoom />
-          //     </Protected>
-          //   ),
-          // }[section]
-        // } */}
+      <Box ref={ref}>
+        {
+         {
+           0: <ClusterMap />,
+           1: <Rooms />,
+           2: <AddRoom />
+          //  (
+            // <Protected>
+             
+            //  </Protected>
+          //  ),
+           }[value]
+         }
         <Paper
           elevation={3}
           sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 2 }}

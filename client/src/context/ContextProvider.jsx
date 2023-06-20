@@ -3,11 +3,12 @@ import reducer from './reducer'
 
 const initialState={
     currentUser:null,
-    openLogin:true,
+    openLogin:false,
     loading:false,
     alert: { open: false, severity: 'info', message: '' },
     profile:{open:false, file:null ,photoURL :''},
     images:[],
+    details:{title:'',description:'',price:0},
 };
 // User should be a global state because it is used in many components
 // Login should be a global state because we can login from multiple places in the project

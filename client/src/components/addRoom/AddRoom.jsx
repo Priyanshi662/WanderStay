@@ -13,8 +13,10 @@ import React, { useEffect, useState } from 'react';
 import AddDetails from './addDetails/AddDetails';
 import AddImages from './addImages/AddImages';
 import AddLocation from './addLocation/AddLocation';
+import { useValue } from '../../context/ContextProvider';
 
 const AddRoom = () => {
+    const {state:{images,details}}=useValue();
     const [activeStep,setActiveStep]=useState(0)
     const [steps,setSteps]=useState(
         [{label :'Location' ,completed:false},
@@ -41,6 +43,30 @@ const AddRoom = () => {
     const findUnfinished=()=>{
         return steps.findIndex(step=>!step.completed)
     }
+    const setComplete = (index, status) => {
+        setSteps((steps) => {
+          steps[index].completed = status;
+          return [...steps];
+        });
+      };
+      
+    useEffect(() => {
+    if (details.title.length > 4 && details.description.length > 9) {
+        if (!steps[1].completed) setComplete(1, true);
+    } else {
+        if (steps[1].completed) setComplete(1, false);
+    }
+    }, [details]);     
+
+    useEffect(()=>{
+        if (images.length) {
+            if (!steps[2].completed) 
+                setComplete(2, true);
+          } else {
+            if (steps[2].completed) 
+                setComplete(2, false);
+          }
+    },[images])
     return (
         <Container sx={{my:4}}>
             <Stepper 

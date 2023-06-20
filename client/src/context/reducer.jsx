@@ -23,6 +23,11 @@ const reducer=(state,action)=>{
             return { ...state, profile:action.payload };
         case 'UPDATE_IMAGES' :
             return {...state,images:[...state.images,action.payload]};
+        case 'DELETE_IMAGE':
+            return {...state,images : state.images.filter(image=>image!==action.payload)}
+
+            case 'UPDATE_DETAILS':
+                return {...state,details:{...state.details,...action.payload}}
         default:
             throw new Error("No matching action!")
     }

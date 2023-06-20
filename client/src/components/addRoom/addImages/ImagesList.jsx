@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useValue } from '../../../context/ContextProvider';
-// import deleteFile from '../../../firebase/deleteFile';
+import deleteFile from '../../../firebase/deleteFile';
 
 const ImagesList = () => {
   const {
@@ -18,9 +18,9 @@ const ImagesList = () => {
 
   const handleDelete = async (image) => {
     dispatch({ type: 'DELETE_IMAGE', payload: image });
-    if (updatedRoom)
-      return dispatch({ type: 'UPDATE_DELETED_IMAGES', payload: [image] });
     const imageName = image?.split(`${currentUser?.id}%2F`)[1]?.split('?')[0];
+    // if (updatedRoom)
+    //   return dispatch({ type: 'UPDATE_DELETED_IMAGES', payload: [image] });
     try {
       await deleteFile(`rooms/${currentUser?.id}/${imageName}`);
     } catch (error) {

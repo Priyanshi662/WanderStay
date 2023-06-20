@@ -14,15 +14,29 @@ import AddDetails from './addDetails/AddDetails';
 import AddImages from './addImages/AddImages';
 import AddLocation from './addLocation/AddLocation';
 import { useValue } from '../../context/ContextProvider';
+import { createRoom } from '../../actions/room';
 
-const AddRoom = () => {
-    const {state:{images,details}}=useValue();
+const AddRoom = (setPage) => {
+
+    const {state:{
+        images,
+        details,
+        location,
+        currentUser
+    },dispatch}=useValue();
+
     const [activeStep,setActiveStep]=useState(0)
     const [steps,setSteps]=useState(
         [{label :'Location' ,completed:false},
         {label :'Details' ,completed:false},
         {label :'Images' ,completed:false},]
         )
+    const [showSubmit,setShowSubmit]=useState(false);
+    
+    const findUnfinished=()=>{
+        return steps.findIndex(step=>!step.completed)
+    }
+
     const handleNext=()=>{
         if(activeStep<steps.length-1)
         {
@@ -33,6 +47,7 @@ const AddRoom = () => {
             setActiveStep(stepsIndex);
         }
     }
+
     const checkDisabled=()=>{
         if(activeStep<steps.length-1)  return false
         const index=findUnfinished()
@@ -40,9 +55,7 @@ const AddRoom = () => {
             return false
         return true
     }
-    const findUnfinished=()=>{
-        return steps.findIndex(step=>!step.completed)
-    }
+ 
     const setComplete = (index, status) => {
         setSteps((steps) => {
           steps[index].completed = status;
@@ -58,6 +71,14 @@ const AddRoom = () => {
     }
     }, [details]);     
 
+    useEffect(() => {
+        if (location.lng || location.lat) {
+          if (!steps[0].completed) setComplete(0, true);
+        } else {
+          if (steps[0].completed) setComplete(0, false);
+        }
+      }, [location]);
+
     useEffect(()=>{
         if (images.length) {
             if (!steps[2].completed) 
@@ -67,6 +88,27 @@ const AddRoom = () => {
                 setComplete(2, false);
           }
     },[images])
+
+    useEffect(() => {
+        if (findUnfinished() === -1) {
+          if (!showSubmit) setShowSubmit(true);
+        } else {
+          if (showSubmit) setShowSubmit(false);
+        }
+      }, [steps]);
+    
+      const handleSubmit = () => {
+        const room = {
+          lng: location.lng,
+          lat: location.lat,
+          price: details.price,
+          title: details.title,
+          description: details.description,
+          images,
+        };
+        createRoom(room,currentUser,dispatch,setPage);
+      };
+      
     return (
         <Container sx={{my:4}}>
             <Stepper 
@@ -75,13 +117,15 @@ const AddRoom = () => {
             nonLinear
             sx={{mb:3}}
             >
-        {
-        steps.map((step,index)=>{
-            <Step key={index} completed={step.completed}>
-                <StepLabel>{step.label}</StepLabel>
+        {steps.map((step,index)=>(
+            <Step key={step.label} completed={step.completed}>
+                <StepButton onClick={()=>setActiveStep(index)}>
+                    {step.label}
+                </StepButton>
             </Step>
-        })}        
+        ))}        
         </Stepper>
+
         <Box sx={{ pb: 7 }}>
         {
           {
@@ -90,10 +134,10 @@ const AddRoom = () => {
             2: <AddImages />,
           }[activeStep]
         }
-        </Box>
+        
         <Stack
         direction='row'
-        sx={{pt:2,pb:7,justifyContent:'space-around'}}
+        sx={{pt:2,justifyContent:'space-around'}}
         >
             <Button
             color="inherit"
@@ -102,16 +146,31 @@ const AddRoom = () => {
             >
                     Back
             </Button>
+
             <Button
             disabled={checkDisabled()}
             onClick={handleNext}
             >
                     Next
             </Button>
+
         </Stack>
+        <Stack
+        sx={{ alignItems: 'center', justifyContent: 'center', gap: 2 }}
+        direction="row"
+        >
+        {showSubmit && (
+            <Button
+                variant='contained'
+                endIcon={<Send/>}
+                onClick={handleSubmit}
+                >Submit
+            </Button>
+        )}
+        </Stack>
+        
+        </Box>
         </Container>
-
-
     )
 }
 export default AddRoom

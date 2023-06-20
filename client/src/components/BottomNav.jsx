@@ -10,7 +10,8 @@ import {
   import Rooms from './rooms/Rooms';
   import AddRoom from './addRoom/AddRoom';
   // import Protected from './protected/Protected';
-  // import { useValue } from '../context/ContextProvider';
+  import { useValue } from '../context/ContextProvider';
+import Protected from './protected/Protected';
   
   const BottomNav = () => {
     const [value,setValue]=useState(0)
@@ -28,12 +29,7 @@ import {
          {
            0: <ClusterMap />,
            1: <Rooms />,
-           2: <AddRoom />
-          //  (
-            // <Protected>
-             
-            //  </Protected>
-          //  ),
+           2: <Protected><AddRoom setPage={setValue}/></Protected> 
            }[value]
          }
         <Paper

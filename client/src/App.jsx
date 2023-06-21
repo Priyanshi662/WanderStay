@@ -8,11 +8,11 @@ const App=()=>
 {
     return(
         <>
-        <Loading/>
-        <Notification/>
-        <Navbar/>
-        <Login/>
-        <BottomNav/>
+            <Loading/>
+            <Notification/>
+            <Navbar/>
+            <Login/>
+            <BottomNav/>
         </>
     )
 }

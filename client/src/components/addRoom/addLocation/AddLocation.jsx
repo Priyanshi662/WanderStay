@@ -13,7 +13,7 @@ const AddLocation = () => {
   const {
     state: {
       location: { lng, lat },
-    //   currentUser,
+      currentUser,
     },
     dispatch,
   } = useValue();
@@ -31,9 +31,9 @@ const AddLocation = () => {
           return response.json();
         })
         .then((data) => {
-            mapRef.current.flyTo({
-                center:[data.longitude,data.latitude],
-            })
+            // mapRef.current.flyTo({
+            //     center:[data.longitude,data.latitude],
+            // })
             dispatch({
                 type: 'UPDATE_LOCATION',
                 payload: { lng: data.longitude, lat: data.latitude }

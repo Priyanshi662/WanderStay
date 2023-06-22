@@ -11,7 +11,9 @@ const initialState={
     details:{title:'',description:'',price:0},
     location:{lng:0,lat:0},
     rooms:[],
-    
+    priceFilter:50,
+    addressFilter:null,
+    filteredRooms: [],
 };
 // User should be a global state because it is used in many components
 // Login should be a global state because we can login from multiple places in the project
@@ -30,6 +32,7 @@ const ContextProvider=({children})=>
 {
     const [state,dispatch]=useReducer(reducer,initialState)
     const mapRef=useRef();
+    const containerRef=useRef();
     useEffect(()=>{
         // the user is stored as a string , we parse it as an object using json.parse
         const currentUser=JSON.parse(localStorage.getItem('currentUser'))
@@ -39,7 +42,7 @@ const ContextProvider=({children})=>
         }
     },[]);
     return (
-        <Context.Provider value={{state,dispatch,mapRef}}> {children}</Context.Provider>
+        <Context.Provider value={{state,dispatch,mapRef,containerRef}}> {children}</Context.Provider>
     );
 }
 export default ContextProvider;

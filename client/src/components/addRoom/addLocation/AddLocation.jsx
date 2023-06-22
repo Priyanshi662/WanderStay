@@ -59,7 +59,7 @@ const AddLocation = () => {
       }}
     >
       <ReactMapGL
-        // ref={mapRef}
+        ref={mapRef}
         mapboxAccessToken={import.meta.env.VITE_APP_MAP_TOKEN}
         initialViewState={{
           longitude: lng,

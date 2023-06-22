@@ -5,6 +5,8 @@ import ReactMapGL from 'react-map-gl';
 import Supercluster from 'supercluster';
 import './cluster.css';
 import { Avatar, Paper, Tooltip } from '@mui/material';
+import GeocoderInput from '../sidebar/GeocoderInput';
+// import PopupRoom from './PopupRoom';
 
 const supercluster = new Supercluster({
   radius: 75,
@@ -12,7 +14,7 @@ const supercluster = new Supercluster({
 });
 
 const ClusterMap = () => {
-  const {state:{rooms},dispatch,mapRef}=useValue();
+  const {state:{filteredRooms},dispatch,mapRef}=useValue();
 
   const [points, setPoints] = useState([]);
   const [clusters, setClusters] = useState([]);
@@ -24,7 +26,7 @@ const ClusterMap = () => {
   }, []);
 
   useEffect(()=>{
-    const points=rooms.map(room=>({
+    const points=filteredRooms.map(room=>({
       type:'feature',
       properties:{
         cluster:false,
@@ -44,7 +46,7 @@ const ClusterMap = () => {
       }
     }))
     setPoints(points)
-  },[rooms])
+  },[filteredRooms])
 
 useEffect(()=>{
   supercluster.load(points)
@@ -102,6 +104,7 @@ useEffect(()=>{
                   });
                 }}
               >
+                {/* the number of rooms will be shown at the current longitude and latitude */}
                 {point_count}
               </div>
             </Marker>
@@ -124,6 +127,21 @@ useEffect(()=>{
           </Marker>
         );
       })}
+      <GeocoderInput />
+      
+    {/*
+      {popupInfo && (
+        <Popup
+          longitude={popupInfo.lng}
+          latitude={popupInfo.lat}
+          maxWidth="auto"
+          closeOnClick={false}
+          focusAfterOpen={false}
+          onClose={() => setPopupInfo(null)}
+        >
+          <PopupRoom {...{ popupInfo }} />
+        </Popup>
+      )} */}
     </ReactMapGL>
     </>
   );

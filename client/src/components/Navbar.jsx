@@ -9,10 +9,9 @@ import {
   Typography,
 } from '@mui/material';
 import { Lock, Menu } from '@mui/icons-material';
-
 import { useValue } from '../context/ContextProvider';
 import UserIcons from './user/UserIcons';
-// import Sidebar from './sidebar/Sidebar';
+import Sidebar from './sidebar/Sidebar';
 
 const NavBar = () => {
   const {
@@ -67,7 +66,7 @@ const NavBar = () => {
         </Container>
       </AppBar>
       <Toolbar />
-      {/* <Sidebar {...{ isOpen, setIsOpen }} /> */}
+      <Sidebar {...{ isOpen, setIsOpen }} />
     </>
   );
 };

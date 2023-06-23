@@ -1,12 +1,12 @@
-import React, { useEffect,useRef,useState} from 'react';
+import React, { useEffect,useState} from 'react';
 import { useValue } from '../../context/ContextProvider';
 import { getRooms } from '../../actions/room';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL,{Marker,Popup} from 'react-map-gl';
 import Supercluster from 'supercluster';
 import './cluster.css';
 import { Avatar, Paper, Tooltip } from '@mui/material';
 import GeocoderInput from '../sidebar/GeocoderInput';
-// import PopupRoom from './PopupRoom';
+import PopupRoom from './PopupRoom';
 
 const supercluster = new Supercluster({
   radius: 75,
@@ -20,7 +20,8 @@ const ClusterMap = () => {
   const [clusters, setClusters] = useState([]);
   const [bounds, setBounds] = useState([-180, -85, 180, 85]);
   const [zoom, setZoom] = useState(0);
-  
+  const [popupInfo,setPopupInfo]=useState(null)
+
   useEffect(() => {
     getRooms(dispatch);
   }, []);
@@ -129,7 +130,7 @@ useEffect(()=>{
       })}
       <GeocoderInput />
       
-    {/*
+    
       {popupInfo && (
         <Popup
           longitude={popupInfo.lng}
@@ -141,7 +142,7 @@ useEffect(()=>{
         >
           <PopupRoom {...{ popupInfo }} />
         </Popup>
-      )} */}
+      )}
     </ReactMapGL>
     </>
   );

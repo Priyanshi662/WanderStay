@@ -44,6 +44,9 @@ const reducer=(state,action)=>{
         case 'UPDATE_ROOMS':
             return {...state,rooms:action.payload,addressFilter:null,priceFilter:50,filteredRooms:action.payload};
 
+        case 'UPDATE_ROOM':
+            return {...state,room:action.payload}
+            
         case 'FILTER_PRICE':
             return {...state,priceFilter:action.payload,filteredRooms:applyFilter(
                 state.rooms,state.addressFilter,action.payload

@@ -14,6 +14,7 @@ const initialState={
     priceFilter:50,
     addressFilter:null,
     filteredRooms: [],
+    room:null,
 };
 // User should be a global state because it is used in many components
 // Login should be a global state because we can login from multiple places in the project

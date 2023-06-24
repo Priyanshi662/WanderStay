@@ -10,7 +10,7 @@ import {
   Stepper,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import AddDetails from './addDetails/AddDetails';
+import AddDetails from './addDetails/addDetails';
 
 import AddImages from './addImages/AddImages';
 import AddLocation from './addLocation/AddLocation';

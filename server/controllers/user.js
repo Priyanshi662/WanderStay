@@ -77,4 +77,13 @@ export const login = tryCatch(async (req, res) => {
     });
     res.status(200).json({success:true,result:{name,photoURL,token}});
   });
+  export const getUsers = tryCatch(async (req, res) => {
+    const users = await User.find().sort({ _id: -1 });
+    res.status(200).json({ success: true, result: users });
+  });
   
+  export const updateStatus = tryCatch(async (req, res) => {
+    const { role, active } = req.body;
+    await User.findByIdAndUpdate(req.params.userId, { role, active });
+    res.status(200).json({ success: true, result: { _id: req.params.userId } });
+  });

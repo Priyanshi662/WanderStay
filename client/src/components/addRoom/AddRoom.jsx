@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import AddDetails from './addDetails/AddDetails';
+
 import AddImages from './addImages/AddImages';
 import AddLocation from './addLocation/AddLocation';
 import { useValue } from '../../context/ContextProvider';

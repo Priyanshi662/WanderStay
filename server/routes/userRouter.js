@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { register,login, updateProfile } from '../../../WanderStay/server/controllers/user.js';
+import { register,login, updateProfile } from '../controllers/user';
 import auth from '../middleware/auth.js';
 
 const userRouter=Router();

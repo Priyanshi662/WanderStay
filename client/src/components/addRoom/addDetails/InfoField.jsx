@@ -1,7 +1,7 @@
 import { Avatar, InputAdornment, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useValue } from '../../../context/ContextProvider';
-import pendingIcon from './icons/progress1.svg';
+import pendingIcon from './Icons/progress1.svg';
 import { Check } from '@mui/icons-material';
 
 let timer;

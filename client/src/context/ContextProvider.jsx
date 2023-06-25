@@ -1,4 +1,9 @@
-import React,{createContext,useContext,useEffect,useRef,useReducer} from 'react'
+import {createContext,
+    useContext,
+    useEffect,
+    useRef,
+    useReducer
+} from 'react'
 import reducer from './reducer'
 
 const initialState={
@@ -15,6 +20,7 @@ const initialState={
     addressFilter:null,
     filteredRooms: [],
     room:null,
+    users:[]
 };
 // User should be a global state because it is used in many components
 // Login should be a global state because we can login from multiple places in the project
@@ -42,8 +48,28 @@ const ContextProvider=({children})=>
             dispatch({type:"UPDATE_USER",payload:currentUser})
         }
     },[]);
+    
+    useEffect(() => {
+        if (state.currentUser) {
+          const room = JSON.parse(localStorage.getItem(state.currentUser.id));
+          if (room) {
+            dispatch({ type: 'UPDATE_LOCATION', payload: room.location });
+            dispatch({ type: 'UPDATE_DETAILS', payload: room.details });
+            dispatch({ type: 'UPDATE_IMAGES', payload: room.images });
+            // dispatch({ type: 'UPDATE_UPDATED_ROOM', payload: room.updatedRoom });
+            // dispatch({
+            //   type: 'UPDATE_DELETED_IMAGES',
+            //   payload: room.deletedImages,
+            // });
+            // dispatch({ type: 'UPDATE_ADDED_IMAGES', payload: room.addedImages });
+          }
+        }
+      }, [state.currentUser]);
+
     return (
-        <Context.Provider value={{state,dispatch,mapRef,containerRef}}> {children}</Context.Provider>
+        <Context.Provider value={{state,dispatch,mapRef,containerRef}}> 
+        {children}
+        </Context.Provider>
     );
 }
 export default ContextProvider;

@@ -3,11 +3,9 @@ import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { useValue } from '../../context/ContextProvider';
 import jwtDecode from 'jwt-decode';
-// import { config } from 'dotenv';
-// config();
 
 const GoogleOneTapLogin = () => {
-  const {state:{alert}, dispatch } = useValue();
+  const { dispatch } = useValue();
   const [disabled, setDisabled] = useState(false);
 
   const handleResponse = (response) => {
@@ -23,7 +21,7 @@ const GoogleOneTapLogin = () => {
         photoURL,
         token,
         google: true,
-        role: 'basic',
+        // role: 'basic',
       },
     });
     dispatch({ type: 'CLOSE_LOGIN' });

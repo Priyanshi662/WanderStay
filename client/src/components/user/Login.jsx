@@ -35,9 +35,12 @@ const Login = () => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    if (!isRegister) return login({ email, password }, dispatch);
+    if (!isRegister) 
+      return login({ email, password }, dispatch);
+
     const name = nameRef.current.value;
     const confirmPassword = confirmPasswordRef.current.value;
+
     if (password !== confirmPassword)
       return dispatch({
         type: 'UPDATE_ALERT',
@@ -53,6 +56,7 @@ const Login = () => {
   useEffect(() => {
     isRegister ? setTitle('Register') : setTitle('Login');
   }, [isRegister]);
+  
   return (
     <Dialog open={openLogin} onClose={handleClose}>
       <DialogTitle>

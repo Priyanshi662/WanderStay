@@ -1,32 +1,43 @@
 // uuidv4 is used to generate unique name for the uploaded image0
 import {v4 as uuidv4} from 'uuid'
 import fetchData from "./utils/fetchData"
+import uploadFile from '../firebase/uploadFile'
 
 // need to enable cors for fetching this URL
 const url=import.meta.env.VITE_APP_SERVER_URL+'/user'
 
 export const register =async(user,dispatch)=>{
     dispatch({type:"START_LOADING"})
-    const result=await fetchData({url:url+'/register',body:user},dispatch)
+    const result=await fetchData(
+      {url: url+'/register',body:user},
+      dispatch
+    );
     if(result)
     {
-        dispatch({type:"UPDATE_USER",payload:result})
-        dispatch({type:"CLOSE_LOGIN"})
-        dispatch({type:"UPDATE_ALERT",payload:{open:true,severity:'success',message:"Your account has been created successfully"}})
+        dispatch({type:"UPDATE_USER",payload:result});
+        dispatch({type:"CLOSE_LOGIN"});
+        dispatch({type:"UPDATE_ALERT",
+        payload:{
+          open:true,
+          severity:'success',
+          message:"Your account has been created successfully"
+        },
+      });
     }
     // send request with fetch
-    dispatch({type:"END_LOADING"})
+    dispatch({type:"END_LOADING"});
 };
 
 export const login = async (user, dispatch) => {
     dispatch({ type: 'START_LOADING' });
   
-    const result = await fetchData({ url: url + '/login', body: user }, dispatch);
+    const result = await fetchData(
+      { url: url + '/login', body: user }, 
+      dispatch);
     if (result) {
       dispatch({ type: 'UPDATE_USER', payload: result });
       dispatch({ type: 'CLOSE_LOGIN' });
     }
-  
     dispatch({ type: 'END_LOADING' });
   };
 
@@ -86,3 +97,29 @@ export const login = async (user, dispatch) => {
     dispatch({ type: 'END_LOADING' });
   };
   
+  export const getUsers = async (dispatch, currentUser) => {
+    const result = await fetchData(
+      { url, method: 'GET', token: currentUser.token },
+      dispatch
+    );
+    if (result) {
+      dispatch({ type: 'UPDATE_USERS', payload: result });
+    }
+  };
+  export const updateStatus = (updatedFields, userId, dispatch, currentUser) => {
+    return fetchData(
+      {
+        url: `${url}/updateStatus/${userId}`,
+        method: 'PATCH',
+        token: currentUser.token,
+        body: updatedFields,
+      },
+      dispatch
+    );
+  };
+  
+  export const logout = (dispatch) => {
+    dispatch({ type: 'UPDATE_USER', payload: null });
+    dispatch({ type: 'RESET_ROOM' });
+    dispatch({ type: 'UPDATE_USERS', payload: [] });
+  };

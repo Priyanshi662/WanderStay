@@ -23,8 +23,6 @@ app.use((req,res,next)=>{
 app.use(express.json({'limit':'20mb'}));
 
 app.get('/',(req,res)=>{
-    const serverUrl = `${req.protocol}://${req.get('host')}`;
-    console.log(`${serverUrl}`);
     res.json({message:'Welcome to the server'})
 });
 app.use('/user',userRouter);
@@ -36,8 +34,11 @@ const startServer=async()=>{
     try{
         await mongoose.connect(process.env.MONGO_CONNECT);
         
-        app.listen(port,()=>console.log(`Server is listening on port ${port}`));
-        
+        app.
+        listen(port,()=>console.log(`Server is listening on port ${port}`))
+        .on('error',(e)=>{
+            console.log('Error happened: ',e.message);
+        });
     }
     catch(error){
         console.log(error);

@@ -4,10 +4,15 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useValue } from "../../context/ContextProvider";
 import UserMenu from "./UserMenu";
-const UserIcons=()=>{
+import useCheckToken from '../../hooks/useCheckToken';
 
-    const {state:{currentUser}}=useValue()
+const UserIcons=()=>{
+    useCheckToken();
+    const {state:{currentUser},
+    }=useValue()
+
     const [anchorUserMenu, setAnchorUserMenu] = useState(null);
+
     return(
         <Box>
             <IconButton size="large" color="inherit">

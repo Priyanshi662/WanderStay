@@ -199,6 +199,7 @@ import {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
           <Routes>
+            {/* Routers for navigating through each page of sidelist */}
             {list.map((item) => (
               <Route key={item.title} path={item.link} element={item.component} />
             ))}

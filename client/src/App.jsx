@@ -1,22 +1,18 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import Login from "./components/user/Login"
-import BottomNav from "./components/BottomNav";
-import Loading from "./components/Loading";
-import Notification from "./components/Notification";
-import Room from "./components/rooms/Room";
-const App=()=>
-{
-    return(
-        <>
-            <Loading/>
-            <Notification/>
-            <Navbar/>
-            <Login/>
-            <BottomNav/>
-            <Room/>
-        </>
-    )
-}
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './pages/dashboard/Dashboard';
+import Home from './pages/Home';
 
-export default App
+const App = () => {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="dashboard/*" element={<Dashboard />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+};
+
+export default App;

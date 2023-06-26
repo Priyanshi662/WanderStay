@@ -10,6 +10,7 @@ const GoogleOneTapLogin = () => {
 
   const handleResponse = (response) => {
     const token = response.credential;
+    console.log(token);
     const decodedToken = jwtDecode(token);
     const { sub: id, email, name, picture: photoURL } = decodedToken;
     dispatch({
@@ -28,11 +29,14 @@ const GoogleOneTapLogin = () => {
   };
   const handleGoogleLogin = () => {
     setDisabled(true);
+    console.log(import.meta.env.VITE_APP_GOOGLE_CLIENT_ID)
     try {
       window.google.accounts.id.initialize({
         client_id: import.meta.env.VITE_APP_GOOGLE_CLIENT_ID,
+        auto_select : true,
         callback: handleResponse,
       });
+      
       window.google.accounts.id.prompt((notification) => {
         if (notification.isNotDisplayed()) {
           throw new Error('Try to clear the cookies or try again later!');

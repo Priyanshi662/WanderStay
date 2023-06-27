@@ -1,8 +1,9 @@
-import { Router } from "express";
-import auth from "../middleware/auth.js";
-import {createRoom, getRooms} from '../controllers/room.js'
-const roomRouter=Router();
+import { Router } from 'express';
+import { createRoom, deleteRoom, getRooms } from '../controllers/room.js';
+import auth from '../middleware/auth.js';
 
-roomRouter.post('/',auth ,createRoom);
-roomRouter.get('/',getRooms);
+const roomRouter = Router();
+roomRouter.post('/', auth, createRoom);
+roomRouter.get('/', getRooms);
+roomRouter.delete('/:roomId', deleteRoom);
 export default roomRouter;

@@ -111,7 +111,7 @@ export const login = async (user, dispatch) => {
       {
         url: `${url}/updateStatus/${userId}`,
         method: 'PATCH',
-        token: currentUser.token,
+        // token: currentUser.token,
         body: updatedFields,
       },
       dispatch

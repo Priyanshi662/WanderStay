@@ -18,15 +18,10 @@ import {
   
   import { Swiper, SwiperSlide } from 'swiper/react';
   import { Navigation, Autoplay, EffectCoverflow, Zoom } from 'swiper';
-//   import 'swiper/css';
-//   import 'swiper/css/navigation';
-//   import 'swiper/css/effect-coverflow';
-//   import 'swiper/css/lazy';
-//   import 'swiper/css/zoom';
   import 'swiper/swiper-bundle.css';
   import './swiper.css';
   
-  const Transition = forwardRef((props, ref) => {
+  const Transition = forwardRef((props, ref) =>  {
     return <Slide direction="up" {...props} ref={ref} />;
   });
   

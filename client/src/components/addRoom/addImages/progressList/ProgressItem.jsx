@@ -10,7 +10,9 @@ const ProgressItem = ({ file }) => {
   const [progress, setProgress] = useState(0);
   const [imageURL, setImageURL] = useState(null);
   const {
-    state: { currentUser, updatedRoom },dispatch} = useValue();
+    state: { currentUser, updatedRoom },
+    dispatch,
+  } = useValue();
   useEffect(() => {
     const uploadImage = async () => {
       const imageName = uuidv4() + '.' + file.name.split('.').pop();
@@ -23,10 +25,8 @@ const ProgressItem = ({ file }) => {
         );
 
         dispatch({ type: 'UPDATE_IMAGES', payload: [url] });
-
         if (updatedRoom)
           dispatch({ type: 'UPDATE_ADDED_IMAGES', payload: [url] });
-         
         setImageURL(null);
       } catch (error) {
         dispatch({
@@ -70,4 +70,3 @@ const backDrop = {
   justifyContent: 'center',
   background: 'rgba(0,0,0, .5)',
 };
-

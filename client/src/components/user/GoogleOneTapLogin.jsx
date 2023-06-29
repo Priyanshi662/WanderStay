@@ -9,7 +9,6 @@ const GoogleOneTapLogin = () => {
   const [disabled, setDisabled] = useState(false);
 
   const handleResponse = (response) => {
-    const token = response.credential;
     console.log(token);
     const decodedToken = jwtDecode(token);
     const { sub: id, email, name, picture: photoURL } = decodedToken;
@@ -29,7 +28,6 @@ const GoogleOneTapLogin = () => {
   };
   const handleGoogleLogin = () => {
     setDisabled(true);
-    console.log(import.meta.env.VITE_APP_GOOGLE_CLIENT_ID)
     try {
       window.google.accounts.id.initialize({
         client_id: import.meta.env.VITE_APP_GOOGLE_CLIENT_ID,

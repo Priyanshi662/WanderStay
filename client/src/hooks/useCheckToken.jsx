@@ -10,7 +10,6 @@ const useCheckToken = () => {
     state: {
       currentUser,
       location,
-      details,
       images,
       updatedRoom,
       deletedImages,

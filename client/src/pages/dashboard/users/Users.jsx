@@ -9,7 +9,7 @@ import UsersActions from './UsersActions';
 
 const Users = ({ setSelectedLink, link }) => {
   const {
-    state: { users },
+    state: { users, currentUser },
     dispatch,
   } = useValue();
 
@@ -18,7 +18,7 @@ const Users = ({ setSelectedLink, link }) => {
 
   useEffect(() => {
     setSelectedLink(link);
-    if (users.length === 0) getUsers(dispatch);
+    if (users.length === 0) getUsers(dispatch, currentUser);
   }, []);
 
   const columns = useMemo(
@@ -39,14 +39,14 @@ const Users = ({ setSelectedLink, link }) => {
         width: 100,
         type: 'singleSelect',
         valueOptions: ['basic', 'editor', 'admin'],
-        editable: true,
+        editable: currentUser?.role === 'admin',
       },
       {
         field: 'active',
         headerName: 'Active',
         width: 100,
         type: 'boolean',
-        editable: true,
+        editable: currentUser?.role === 'admin',
       },
       {
         field: 'createdAt',
@@ -55,7 +55,6 @@ const Users = ({ setSelectedLink, link }) => {
         renderCell: (params) =>
           moment(params.row.createdAt).format('YYYY-MM-DD HH:MM:SS'),
       },
-      // for action save
       { field: '_id', headerName: 'Id', width: 220 },
       {
         field: 'actions',
@@ -65,7 +64,6 @@ const Users = ({ setSelectedLink, link }) => {
           <UsersActions {...{ params, rowId, setRowId }} />
         ),
       },
-      // for useMemo we need to remember the row ID
     ],
     [rowId]
   );
@@ -101,7 +99,6 @@ const Users = ({ setSelectedLink, link }) => {
               theme.palette.mode === 'light' ? grey[200] : grey[900],
           },
         }}
-        // when changed the rowId will be changed which then calls the UserActions component to change the save button to enable
         onCellEditCommit={(params) => setRowId(params.id)}
       />
     </Box>

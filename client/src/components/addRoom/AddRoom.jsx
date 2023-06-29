@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useValue } from '../../context/ContextProvider';
-import AddDetails from './addDetails/AddDetails';
+import AddDetails from './addDetails/addDetails';
 import AddImages from './addImages/AddImages';
 import AddLocation from './addLocation/AddLocation';
 import { clearRoom, createRoom, updateRoom } from '../../actions/room';

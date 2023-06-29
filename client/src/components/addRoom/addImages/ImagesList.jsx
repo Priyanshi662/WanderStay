@@ -19,8 +19,8 @@ const ImagesList = () => {
   const handleDelete = async (image) => {
     dispatch({ type: 'DELETE_IMAGE', payload: image });
     const imageName = image?.split(`${currentUser?.id}%2F`)[1]?.split('?')[0];
-    // if (updatedRoom)
-    //   return dispatch({ type: 'UPDATE_DELETED_IMAGES', payload: [image] });
+    if (updatedRoom)
+      return dispatch({ type: 'UPDATE_DELETED_IMAGES', payload: [image] });
     try {
       await deleteFile(`rooms/${currentUser?.id}/${imageName}`);
     } catch (error) {

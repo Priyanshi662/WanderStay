@@ -21,7 +21,7 @@ const GoogleOneTapLogin = () => {
         photoURL,
         token,
         google: true,
-        // role: 'basic',
+        role: 'basic',
       },
     });
     dispatch({ type: 'CLOSE_LOGIN' });

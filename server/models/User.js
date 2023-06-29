@@ -24,6 +24,7 @@ const userSchema = mongoose.Schema(
       type: String, 
       default: '' 
     },
+    // fields for admin and analytics
     role: {
       type: 'String',
       default: 'basic',

@@ -1,5 +1,5 @@
 import BottomNav from '../components/BottomNav';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/Navbar';
 import Login from '../components/user/Login';
 
 const Home = () => {

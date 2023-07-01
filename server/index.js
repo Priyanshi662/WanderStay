@@ -22,12 +22,12 @@ app.use((req,res,next)=>{
 // limit is used to prevent DOS attack
 app.use(express.json({'limit':'20mb'}));
 
-app.get('/',(req,res)=>{
-    res.json({message:'Welcome to the server'})
-});
-app.use('/user',userRouter);
-app.use('/room',roomRouter);
-app.use((req,res)=>res.status(404).json({message:'Resource not found'}));
+app.use('/user', userRouter);
+app.use('/room', roomRouter);
+app.get('/', (req, res) => res.json({ message: 'Welcome to our API' }));
+app.use((req, res) =>
+  res.status(404).json({ success: false, message: 'Not Found' })
+);
 
 // make server async because we need to connect with mongo db
 const startServer=async()=>{

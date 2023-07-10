@@ -19,7 +19,7 @@ Users with appropriate permissions can add new rooms, update existing room detai
 Users can conveniently upload photos of rooms and profile pictures. We leverage Firebase for secure and fast storage and retrieval of these images.
 
 ## Project Structure:
-
+<pre>
 ├── client/                # Frontend React application
 │   ├── public/            # Public assets
 │   ├── src/               # React components and logic
@@ -35,7 +35,7 @@ Users can conveniently upload photos of rooms and profile pictures. We leverage 
 ├── .gitignore             # Files and directories to be ignored by Git
 ├── README.md              # Project documentation (you are here)
 └── package.json           # Project metadata and scripts
-
+</pre>
 ## Contributing:
 Contributing
 We appreciate contributions from the community to enhance Wanderlust Connect further. To contribute to the project, please follow these steps:

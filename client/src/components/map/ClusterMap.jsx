@@ -45,15 +45,9 @@ const ClusterMap = () => {
         type:'Point',
         coordinates:[parseFloat(room.lng),parseFloat(room.lat)]
       }
-    }))
-    setPoints(points)
-  },[filteredRooms])
-
-useEffect(()=>{
-  supercluster.load(points)
-  // getCluster is a function present in supercluster that gives clusters based on bounds of the map and zoom
-  setClusters(supercluster.getClusters(bounds,zoom));
-},[points,zoom,bounds])
+    }));
+    setPoints(points);
+  },[filteredRooms]);
 
   useEffect(() => {
     if (mapRef.current) {
@@ -62,12 +56,22 @@ useEffect(()=>{
     }
   }, [mapRef?.current]);
 
+useEffect(()=>{
+  supercluster.load(points)
+  // getCluster is a function present in supercluster that gives clusters based on bounds of the map and zoom
+  setClusters(supercluster.getClusters(bounds,zoom));
+},[points,zoom,bounds])
+
+ 
   return (
     <>
     <ReactMapGL
       ref={mapRef}
       mapboxAccessToken={import.meta.env.VITE_APP_MAP_TOKEN}
-      initialViewState={{ latitude: 51.5072, longitude: 0.1276 }}
+      initialViewState={{
+          latitude: 77.7680952, 
+          longitude: 29.0188653 
+      }}
       mapStyle="mapbox://styles/mapbox/streets-v11"
       onZoomEnd={(e) => setZoom(Math.round(e.viewState.zoom))}
       >

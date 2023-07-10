@@ -4,13 +4,18 @@ import roomRouter from './routes/roomRouter.js';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
 import cors from 'cors';
-
+import cookieParser from 'cookie-parser';
 dotenv.config();
 
 const port= process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
+app.use(cookieParser());
+app.use((req, res, next) => {
+    res.cookie('cookieName', 'cookieValue', { sameSite: 'none', secure: true });
+    next();
+  });
 // limit is used to prevent DOS attack
 app.use(express.json({'limit':'20mb'}));
 

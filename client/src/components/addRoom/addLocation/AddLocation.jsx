@@ -91,7 +91,7 @@ const AddLocation = () => {
               type: 'UPDATE_LOCATION',
               payload: { lng: e.coords.longitude, lat: e.coords.latitude },
             })
-        }
+            }
           }
         />
          <Geocoder />

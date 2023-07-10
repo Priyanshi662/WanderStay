@@ -13,14 +13,17 @@ import Protected from './protected/Protected';
 import { useValue } from '../context/ContextProvider';
 
 const BottomNav = () => {
+  
   const {
     state: { section },
     dispatch,
   } = useValue();
   const ref = useRef();
+
   useEffect(() => {
     ref.current.ownerDocument.body.scrollTop = 0;
   }, [section]);
+
   return (
     <Box ref={ref}>
       {

@@ -19,7 +19,8 @@ const uploadFileProgress = (file, subFolder, imageName, setProgress) => {
         try {
           const url = await getDownloadURL(storageRef);
           resolve(url);
-        } catch (error) {
+        } 
+        catch (error) {
           reject(error);
         }
       }

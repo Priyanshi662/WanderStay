@@ -6,6 +6,7 @@ import Room from '../models/Room.js';
 
 export const register = tryCatch(async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(req,res);
   if (password.length < 6)
     return res.status(400).json({
       success: false,

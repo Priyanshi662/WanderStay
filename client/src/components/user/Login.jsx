@@ -88,6 +88,7 @@ const Login = () => {
               type="text"
               fullWidth
               inputRef={nameRef}
+              autoComplete='true'
               inputProps={{ minLength: 2 }}
               required
             />
@@ -99,6 +100,7 @@ const Login = () => {
             id="email"
             label="Email"
             type="email"
+            autoComplete='true'
             fullWidth
             inputRef={emailRef}
             required

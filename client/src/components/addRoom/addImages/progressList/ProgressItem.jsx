@@ -13,6 +13,7 @@ const ProgressItem = ({ file }) => {
     state: { currentUser, updatedRoom },
     dispatch,
   } = useValue();
+  
   useEffect(() => {
     const uploadImage = async () => {
       const imageName = uuidv4() + '.' + file.name.split('.').pop();
@@ -39,6 +40,7 @@ const ProgressItem = ({ file }) => {
     setImageURL(URL.createObjectURL(file));
     uploadImage();
   }, [file]);
+
   return (
     imageURL && (
       <ImageListItem cols={1} rows={1}>

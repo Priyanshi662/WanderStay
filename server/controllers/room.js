@@ -9,6 +9,7 @@ export const createRoom = tryCatch(async (req, res) => {
 });
 
 export const getRooms = tryCatch(async (req, res) => {
+  console.log(req);
   const rooms = await Room.find().sort({ _id: -1 });
   res.status(200).json({ success: true, result: rooms });
 });

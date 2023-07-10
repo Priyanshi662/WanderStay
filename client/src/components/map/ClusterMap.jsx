@@ -28,18 +28,18 @@ const ClusterMap = () => {
 
   useEffect(()=>{
     const points=filteredRooms.map(room=>({
-      type:'feature',
+      type:'Feature',
       properties:{
-        cluster:false,
-        roomId:room._id,
-        price:room.price,
-        title:room.title,
-        description:room.description,
-        lng:room.lng,
-        lat:room.lat,
-        images:room.images,
-        uPhoto:room.uPhoto,
-        uName:room.uName
+        cluster: false,
+        roomId: room._id,
+        price: room.price,
+        title: room.title,
+        description: room.description,
+        lng: room.lng,
+        lat: room.lat,
+        images: room.images,
+        uPhoto: room.uPhoto,
+        uName: room.uName
       },
       geometry:{
         type:'Point',
@@ -65,10 +65,10 @@ useEffect(()=>{
   return (
     <>
     <ReactMapGL
-      initialViewState={{ latitude: 51.5072, longitude: 0.1276 }}
-      mapboxAccessToken={import.meta.env.VITE_APP_MAP_TOKEN}
-      mapStyle="mapbox://styles/mapbox/streets-v11"
       ref={mapRef}
+      mapboxAccessToken={import.meta.env.VITE_APP_MAP_TOKEN}
+      initialViewState={{ latitude: 51.5072, longitude: 0.1276 }}
+      mapStyle="mapbox://styles/mapbox/streets-v11"
       onZoomEnd={(e) => setZoom(Math.round(e.viewState.zoom))}
       >
         {clusters.map((cluster) => {

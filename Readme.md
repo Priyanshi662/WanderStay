@@ -39,9 +39,10 @@ Users can conveniently upload photos of rooms and profile pictures. We leverage 
 ## Contributing:
 Contributing
 We appreciate contributions from the community to enhance Wanderlust Connect further. To contribute to the project, please follow these steps:
-
-Fork the repository on GitHub.
-Create a new branch with a descriptive name.
-Implement your changes and commit them with clear and concise messages.
-Push your changes to your forked repository.
-Submit a pull request, detailing the modifications you have made.
+<pre>
+1. Fork the repository on GitHub.
+2. Create a new branch with a descriptive name.
+3. Implement your changes and commit them with clear and concise messages.
+4. Push your changes to your forked repository.
+5. Submit a pull request, detailing the modifications you have made.
+</pre>

@@ -126,7 +126,7 @@ const Login = () => {
       <DialogActions sx={{ justifyContent: 'left', p: '5px 24px' }}>
         {isRegister
           ? 'Have an account? Sign in now '
-          : "Don'thave an account? Create one now "}
+          : "Don't have an account? Create one now "}
         <Button onClick={() => setIsRegister(!isRegister)}>
           {isRegister ? 'Login' : 'Register'}
         </Button>

@@ -36,7 +36,8 @@ import {
     useEffect(() => {
         // for reverse geocoding
       if (room) {
-        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${room.lng},${room.lat}.json?access_token=${import.meta.env.VITE_APP_MAP_TOKEN}`;
+        const token=import.meta.env.VITE_APP_MAP_TOKEN;
+        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${room.lng},${room.lat}.json?access_token=${token}`;
         fetch(url)
           .then((response) => response.json())
           .then((data) => setPlace(data.features[0]));
@@ -119,7 +120,7 @@ import {
                 flexWrap: 'wrap',
               }}
             >
-                {/* price displauy */}
+                {/* price display */}
               <Box>
                 <Typography variant="h6" component="span">
                   {'Price Per Night: '}

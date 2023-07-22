@@ -86,7 +86,6 @@ const AddLocation = () => {
           trackUserLocation
           onGeolocate={(e) =>
             {
-                console.log(e);
             dispatch({
               type: 'UPDATE_LOCATION',
               payload: { lng: e.coords.longitude, lat: e.coords.latitude },

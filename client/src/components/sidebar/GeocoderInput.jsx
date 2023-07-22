@@ -1,8 +1,8 @@
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { useEffect } from 'react';
 import { useValue } from '../../context/ContextProvider';
 
-const ctrl = new MapboxGeocoder({
+const ctrl = new MapBoxGeocoder({
   marker: false,
   accessToken: import.meta.env.VITE_APP_MAP_TOKEN,
 });

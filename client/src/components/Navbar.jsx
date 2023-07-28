@@ -41,7 +41,7 @@ const NavBar = () => {
               noWrap
               sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
             >
-              You Are Welcome
+              Wander Stay!
             </Typography>
             <Typography
               variant="h6"
@@ -49,7 +49,7 @@ const NavBar = () => {
               noWrap
               sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
             >
-              YRW
+              Wander Stay!
             </Typography>
             {!currentUser ? (
               <Button

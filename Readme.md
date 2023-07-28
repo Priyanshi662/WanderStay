@@ -46,3 +46,16 @@ We appreciate contributions from the community to enhance Wanderlust Connect fur
 4. Push your changes to your forked repository.
 5. Submit a pull request, detailing the modifications you have made.
 </pre>
+
+## Screen shots:
+![image1](https://github.com/Priyanshi662/WanderStay/assets/77521822/8db8f44d-9d0d-4f11-b0ca-19989b0df22c)
+![image](https://github.com/Priyanshi662/WanderStay/assets/77521822/fe1383ba-dfb3-4d6f-9286-cbff747b54e7)
+![image](https://github.com/Priyanshi662/WanderStay/assets/77521822/e70a2b47-6224-476b-a10a-4318b102d861)
+![image](https://github.com/Priyanshi662/WanderStay/assets/77521822/5455f050-ec8f-442b-b407-3827be31fdbd)
+
+### Adding rooms feature ( for users and admins only ) :
+![image](https://github.com/Priyanshi662/WanderStay/assets/77521822/7e27baf2-4abc-4348-a3b0-d3fe1a32050c)
+![image](https://github.com/Priyanshi662/WanderStay/assets/77521822/24416e8c-2f4a-49e6-acf0-a0e1e4a0996a)
+![image](https://github.com/Priyanshi662/WanderStay/assets/77521822/57031104-2df1-4cbc-95a6-d69c61267a58)
+
+

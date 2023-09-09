@@ -12,7 +12,7 @@ import { Lock, Menu } from '@mui/icons-material';
 import { useValue } from '../context/ContextProvider';
 import UserIcons from './user/UserIcons';
 import Sidebar from './sidebar/Sidebar';
-
+import logo from '../assets/logo.png';
 const NavBar = () => {
   const {
     state: { currentUser },
@@ -41,7 +41,7 @@ const NavBar = () => {
               noWrap
               sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
             >
-              Wander Stay!
+              <img src={logo} alt='Wander Stay!' style={{height:'50px', width:"180px",marginRight:"50px"}}></img>
             </Typography>
             <Typography
               variant="h6"
@@ -49,7 +49,7 @@ const NavBar = () => {
               noWrap
               sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
             >
-              Wander Stay!
+              <img src={logo} alt='Wander Stay!' style={{height:'50px', width:"180px",marginRight:"50px"}}></img>
             </Typography>
             {!currentUser ? (
               <Button

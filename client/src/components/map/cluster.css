@@ -10,6 +10,7 @@
     color: #fff;
     background: #1978c8;
     border-radius: 50%;
+    /* paddding for circle in cluster */
     padding: 10px;
     display: flex;
     justify-content: center;

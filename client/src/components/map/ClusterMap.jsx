@@ -79,7 +79,7 @@ const ClusterMap = () => {
       onZoomEnd={(e) => setZoom(Math.round(e.viewState.zoom))}
     >
       {/* h1 component is overrided by map */}
-      <h1 style={{width: "200px", height:"500px"}}>Hello</h1>
+          
       {/* function for displaying cluster points which were loaded in useEffect hook*/}
       {clusters.map((cluster) => {
         //for each cluster display a marker with the number of points in cluster count
@@ -133,6 +133,7 @@ const ClusterMap = () => {
           </Marker>
         );
       })}
+      <h1 style={{width: "200px", height:"450px"}}>Hello </h1>
       {popupInfo && (
         <Popup
           longitude={popupInfo.lng}

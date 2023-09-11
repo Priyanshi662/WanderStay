@@ -1,7 +1,5 @@
 import React,{useState} from "react";
-import {Avatar, Badge, Box,IconButton, Tooltip} from "@mui/material"
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import {Avatar, Badge, Box,IconButton, Tooltip, Typography} from "@mui/material";
 import { useValue } from "../../context/ContextProvider";
 import UserMenu from "./UserMenu";
 import useCheckToken from '../../hooks/useCheckToken';
@@ -15,17 +13,7 @@ const UserIcons=()=>{
 
     return(
         <Box>
-            
-            {/* <IconButton size="large" color="inherit">
-                <Badge color="error" badgeContent={5}>
-                    <MailIcon/>
-                </Badge>
-            </IconButton>
-            <IconButton size="large" color="inherit">
-                <Badge color="error" badgeContent={20}>
-                    <NotificationsIcon/>
-                </Badge>
-            </IconButton> */}
+            <Badge sx={{fontSize:"20px"}}>{currentUser?.name}</Badge>
             <Tooltip title="Open User Settings">
                 <IconButton onClick={(e)=>setAnchorUserMenu(e.currentTarget)}>
                     <Avatar src={currentUser?.photoURL} alt={currentUser?.name}>

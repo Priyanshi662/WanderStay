@@ -38,7 +38,7 @@ Users can conveniently upload photos of rooms and profile pictures. We leverage 
 </pre>
 
 ## Contributing:
-We appreciate contributions from the community to enhance Wanderlust Connect further. To contribute to the project, please follow these steps:
+We appreciate contributions from the community to enhance Wander stay connect webapp further. To contribute to the project, please follow these steps:
 <pre>
 1. Fork the repository on GitHub.
 2. Create a new branch with a descriptive name.

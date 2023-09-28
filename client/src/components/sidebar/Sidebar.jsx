@@ -21,7 +21,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     hideBackdrop={true} 
     open={isOpen}>
 
-      <DrawerHeader>
+      <DrawerHeader sx={{color:'primary.main'}}>
 
         <Typography>Apply Search or Filter:</Typography>
         <IconButton onClick={() => setIsOpen(false)}>
@@ -29,7 +29,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         </IconButton>
       </DrawerHeader>
       <Box sx={{ width: 240, p: 3 }}>
-        {/* containerRef will contain geocoder input */}
         <Box ref={containerRef}></Box>
         <PriceSlider />
       </Box>

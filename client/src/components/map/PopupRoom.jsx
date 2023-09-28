@@ -52,6 +52,7 @@ const PopupRoom = ({ popupInfo }) => {
                   objectFit: 'cover',
                 }}
                 onClick={() =>
+                  //show the whole page of the room details 
                   dispatch({ type: 'UPDATE_ROOM', payload: popupInfo })
                 }
               />

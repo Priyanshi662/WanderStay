@@ -5,7 +5,7 @@ import {
   Paper,
 } from '@mui/material';
 import { AddLocationAlt, Bed, LocationOn } from '@mui/icons-material';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import ClusterMap from './map/ClusterMap';
 import Rooms from './rooms/Rooms';
 import AddRoom from './addRoom/AddRoom';
@@ -25,6 +25,8 @@ const BottomNav = () => {
   }, [section]);
 
   return (
+    // this is conditional rendering , based on the section value
+    // object can be thought of as a key value pair , section is used to access the value based on the key that is section value
     <Box ref={ref}>
       {
         {

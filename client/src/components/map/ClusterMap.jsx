@@ -34,6 +34,7 @@ const ClusterMap = () => {
   useEffect(() => {
     // mapping the rooms with - 1. its latitude and longitude for displaying in the map
     // 2. features - used in pop up rooms function
+    // each room is mapped as a geojson object
     const points = filteredRooms.map((room) => ({
       type: 'Feature',
       properties: {
@@ -64,7 +65,8 @@ const ClusterMap = () => {
 
   useEffect(() => {
     if (mapRef.current) {
-      // if mapRef is not null then setting the bounds of the map , as returned by mapRef object
+      // if mapRef is not null then setting the bounds of the map , 
+      // as returned by mapRef object
       setBounds(mapRef.current.getMap().getBounds().toArray().flat());
     }
   }, [mapRef?.current]);
@@ -106,6 +108,7 @@ const ClusterMap = () => {
                   mapRef.current.flyTo({
                     center: [longitude, latitude],
                     zoom,
+                    // speed =1 for smooth transition
                     speed: 1,
                   });
                 }}
@@ -134,6 +137,7 @@ const ClusterMap = () => {
         );
       })}
       <h1 style={{width: "200px", height:"450px"}}>Hello </h1>
+      {/* finally when the popupinfo is not null , it can be closed by clicking outside the floating window */}
       {popupInfo && (
         <Popup
           longitude={popupInfo.lng}

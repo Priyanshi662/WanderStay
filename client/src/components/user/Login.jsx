@@ -37,7 +37,7 @@ const Login = () => {
     const password = passwordRef.current.value;
     if (!isRegister) 
       return login({ email, password }, dispatch);
-
+//  login and register are defined in actions/users
     const name = nameRef.current.value;
     const confirmPassword = confirmPasswordRef.current.value;
 
@@ -58,6 +58,7 @@ const Login = () => {
   }, [isRegister]);
   
   return (
+    // Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
     <Dialog open={openLogin} onClose={handleClose}>
       <DialogTitle>
         {title}

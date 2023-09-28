@@ -34,7 +34,7 @@ import {
     const [place, setPlace] = useState(null);
   
     useEffect(() => {
-        // for reverse geocoding
+        // for reverse geocoding for storing the location of the room as IP based on the marker on the map provided by user
       if (room) {
         const token=import.meta.env.VITE_APP_MAP_TOKEN;
         const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${room.lng},${room.lat}.json?access_token=${token}`;
@@ -52,7 +52,7 @@ import {
         fullScreen
         open={Boolean(room)}
         onClose={handleClose}
-        // transition dialog bottom to up when opened ->done by forward ref
+        // transition dialog bottom to up when opened ->done by forward ref on slider
         TransitionComponent={Transition}
       >
         <AppBar position="relative">
@@ -70,6 +70,7 @@ import {
 
           </Toolbar>
         </AppBar>
+        
         {/* image carousal */}
         <Container sx={{ pt: 5 }}>
           <Swiper
@@ -102,7 +103,7 @@ import {
                 position: 'absolute',
                 bottom: '8px',
                 left: '8px',
-                // to make it on top of the slider
+                // to make it on bottom of the slider
                 zIndex: 2,
               }}
             >
@@ -123,7 +124,7 @@ import {
                 {/* price display */}
               <Box>
                 <Typography variant="h6" component="span">
-                  {'Price Per Night: '}
+                  {'Price per day : '}
                 </Typography>
                 <Typography component="span">
                   {room?.price === 0 ? 'Free Stay' : '$' + room?.price}
